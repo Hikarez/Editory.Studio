@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% from "_partials.html" import work_card, process_list, package_list %}
+{% block content %}
+<section class="wrap hero">
+  <div class="hero-copy">
+    <h1>Footage mentah masuk, konten siap tayang keluar.</h1>
+    <p class="lead">{{ brand.short }}</p>
+    <div class="actions">
+      <a class="btn" href="{{ url_for('proposal_form') }}">Minta penawaran</a>
+      <a class="btn btn-ghost" href="{{ url_for('portofolio') }}">Lihat portofolio</a>
+    </div>
+    <p class="hero-note">Paket mulai {{ packages[0].price|rupiah }} {{ packages[0].unit_label }}, sudah termasuk revisi.</p>
+  </div>
+
+  <div class="editor" aria-hidden="true">
+    <div class="editor-top"><span></span><span></span><span></span><em>promo_menu_final.mp4</em></div>
+    <div class="editor-preview">
+      <div class="frame"><span class="frame-cup"></span><p class="frame-sub">Menu baru, cuma minggu ini</p></div>
+      <div class="editor-meta">
+        <b>00:00:18</b>
+        <small>1080 x 1920, 30 fps</small>
+        <small>Subtitle: aktif</small>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="ruler"><i>0s</i><i>10s</i><i>20s</i><i>30s</i></div>
+      <div class="track"><b>T1</b><div class="lane">
+        <span class="clip c-violet" style="left:6%;width:22%"></span>
+        <span class="clip c-violet" style="left:44%;width:30%"></span>
+      </div></div>
+      <div class="track"><b>V1</b><div class="lane">
+        <span class="clip c-teal" style="left:0;width:24%"></span>
+        <span class="clip c-amber" style="left:24.5%;width:17.5%"></span>
+        <span class="clip c-teal" style="left:42.5%;width:27%"></span>
+        <span class="clip c-rose" style="left:70%;width:30%"></span>
+      </div></div>
+      <div class="track"><b>A1</b><div class="lane">
+        <span class="clip wave" style="left:0;width:100%"></span>
+      </div></div>
+      <div class="playhead"></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <h2>Yang kami kerjakan</h2>
+    <p>Dari video 15 detik untuk Reels sampai vlog YouTube belasan menit, semuanya dikerjakan dengan alur yang sama rapinya.</p>
+  </div>
+  <ul class="services">
+    {% for s in services %}
+    <li><span class="chip c-{{ s.color }}" aria-hidden="true"></span><div><h3>{{ s.title }}</h3><p>{{ s.desc }}</p></div></li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="wrap section">
+  <div class="section-head row">
+    <div>
+      <h2>Karya pilihan</h2>
+      <p>Beberapa contoh pengerjaan untuk berbagai jenis usaha dan kreator.</p>
+    </div>
+    <a href="{{ url_for('portofolio') }}">Lihat semua portofolio</a>
+  </div>
+  <div class="works">
+    {% for item in portfolio %}{{ work_card(item) }}{% endfor %}
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <h2>Alur kerja</h2>
+    <p>Lima langkah dari footage mentah sampai file siap unggah, biasanya selesai dalam 3 sampai 5 hari kerja.</p>
+  </div>
+  {{ process_list(process) }}
+</section>
+
+<section class="wrap section">
+  <div class="section-head row">
+    <div>
+      <h2>Paket layanan</h2>
+      <p>Pilih sesuai ritme posting akunmu. Rincian lengkap ada di halaman layanan.</p>
+    </div>
+    <a href="{{ url_for('layanan') }}">Bandingkan paket</a>
+  </div>
+  {{ package_list(packages) }}
+</section>
+
+<section class="wrap">
+  <div class="cta-band">
+    <div>
+      <h2>Punya footage yang menumpuk di galeri?</h2>
+      <p>Isi brief singkat, lalu proposal lengkap dengan rincian harga langsung jadi dan bisa diunduh sebagai PDF.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="{{ url_for('proposal_form') }}">Buat proposal</a>
+      <a class="btn btn-ghost" href="{{ url_for('kontak') }}">Kirim pesan</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

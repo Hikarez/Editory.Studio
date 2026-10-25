@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% from "_partials.html" import input, textarea %}
+{% block title %}Buat proposal penawaran | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap page-head">
+  <h1>Buat proposal penawaran</h1>
+  <p class="lead">Isi data singkat, lalu proposal lengkap dengan rincian harga langsung jadi. Proposal bisa diunduh sebagai PDF atau dikirim lewat link.</p>
+</section>
+
+<form class="wrap proposal-form" method="post" data-estimate novalidate>
+  <fieldset>
+    <legend>Pilih paket</legend>
+    <div class="pkg-options">
+      {% for p in packages %}
+      <label class="pkg-option">
+        <input type="radio" name="package_id" value="{{ p.id }}" data-price="{{ p.price }}" data-unit-label="{{ p.unit_label }}" data-qty-label="{{ p.qty_label }}"{% if form.get('package_id') == p.id %} checked{% endif %}>
+        <span>
+          <b>{{ p.name }}</b>
+          <em>{{ p.price|rupiah }} {{ p.unit_label }}</em>
+          <small>{{ p.desc }}</small>
+        </span>
+      </label>
+      {% endfor %}
+    </div>
+    {% if errors.get('package_id') %}<p class="error">{{ errors.package_id }}</p>{% endif %}
+  </fieldset>
+
+  <fieldset>
+    <legend>Data klien</legend>
+    <div class="form-grid cols">
+      {{ input('client_company', 'Nama usaha atau akun', form, errors, required=True, attrs='placeholder="Contoh: Kedai Kopi Senja"') }}
+      {{ input('client_name', 'Nama penanggung jawab', form, errors, required=True, attrs='autocomplete="name"') }}
+      {{ input('client_email', 'Email', form, errors, type='email', attrs='autocomplete="email"') }}
+      {{ input('start_date', 'Rencana mulai', form, errors, type='date') }}
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Detail kebutuhan</legend>
+    <div class="form-grid cols">
+      <div class="field{% if errors.get('qty') %} has-error{% endif %}">
+        <label for="qty" data-qty-label>Jumlah</label>
+        <input id="qty" name="qty" type="number" min="1" max="{{ max_qty }}" value="{{ form.get('qty', '1') }}" required{% if errors.get('qty') %} aria-invalid="true"{% endif %}>
+        {% if errors.get('qty') %}<p class="error">{{ errors.qty }}</p>{% endif %}
+      </div>
+      {% if is_admin %}
+      <div class="field{% if errors.get('discount') %} has-error{% endif %}">
+        <label for="discount">Diskon (%) <span class="optional">(khusus admin)</span></label>
+        <input id="discount" name="discount" type="number" min="0" max="{{ max_discount }}" value="{{ form.get('discount', '0') }}">
+        {% if errors.get('discount') %}<p class="error">{{ errors.discount }}</p>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="form-grid">
+      {{ textarea('needs', 'Ceritakan kebutuhanmu', form, errors, placeholder='Contoh: video promo menu untuk Reels, gaya ceria, footage direkam pakai HP.') }}
+    </div>
+  </fieldset>
+
+  <div class="estimate">
+    <div>
+      <p>Estimasi total</p>
+      <output data-total>Pilih paket</output>
+      <small data-total-detail></small>
+    </div>
+    <button class="btn" type="submit">Buat proposal</button>
+  </div>
+</form>
+{% endblock %}

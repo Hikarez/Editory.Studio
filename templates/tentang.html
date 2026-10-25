@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Tentang | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap page-head">
+  <h1>Tentang Editory Studio</h1>
+  <p class="lead">{{ about.intro }}</p>
+</section>
+
+<section class="wrap section two-col">
+  <div class="prose">
+    <h2>Cerita kami</h2>
+    {% for para in about.story %}<p>{{ para }}</p>{% endfor %}
+  </div>
+  <aside class="vm">
+    <h2>Visi</h2>
+    <p>{{ about.vision }}</p>
+    <h2>Misi</h2>
+    <ul>{% for m in about.mission %}<li>{{ m }}</li>{% endfor %}</ul>
+  </aside>
+</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Prinsip kerja</h2></div>
+  <div class="values">
+    {% for v in about['values'] %}
+    <div><h3>{{ v.title }}</h3><p>{{ v.desc }}</p></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Tim</h2><p>Setiap proyek ditangani tim kecil yang saling melengkapi.</p></div>
+  <ul class="team">
+    {% for t in team %}
+    <li>
+      <span class="avatar c-{{ t.color }}" aria-hidden="true">{{ t.role[0] }}</span>
+      <div>
+        <h3>{{ t.role }}</h3>
+        <p class="name">{{ t.name }}</p>
+        <p>{{ t.desc }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

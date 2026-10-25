@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from "_partials.html" import process_list, package_list %}
+{% block title %}Layanan dan harga | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap page-head">
+  <h1>Layanan dan harga</h1>
+  <p class="lead">Tiga paket untuk ritme posting yang berbeda. Semua sudah termasuk revisi, musik bebas royalti, dan file siap unggah.</p>
+</section>
+
+<section class="wrap section">
+  {{ package_list(packages, full=True) }}
+  <p class="note">Butuh kombinasi lain, misalnya hanya video YouTube? Tulis kebutuhanmu di <a href="{{ url_for('proposal_form') }}">form proposal</a> atau <a href="{{ url_for('kontak') }}">kirim pesan</a>.</p>
+</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Cakupan layanan</h2></div>
+  <ul class="services">
+    {% for s in services %}
+    <li><span class="chip c-{{ s.color }}" aria-hidden="true"></span><div><h3>{{ s.title }}</h3><p>{{ s.desc }}</p></div></li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Alur kerja</h2></div>
+  {{ process_list(process) }}
+</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Pertanyaan yang sering diajukan</h2></div>
+  <div class="faq">
+    {% for item in faq %}
+    <details><summary>{{ item.q }}</summary><p>{{ item.a }}</p></details>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

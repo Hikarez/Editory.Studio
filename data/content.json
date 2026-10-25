@@ -1,0 +1,162 @@
+{
+  "brand": {
+    "name": "Editory Studio",
+    "tagline": "Studio editing video dan konten media sosial",
+    "short": "Kami membantu UMKM, brand, dan kreator mengubah footage mentah menjadi video media sosial yang rapi, konsisten, dan enak ditonton sampai habis.",
+    "email": "editory.studio@gmail.com",
+    "instagram": "Editory.STUDIO",
+    "instagram_url": "https://www.instagram.com/editory.studio/",
+    "area": "Melayani klien dari seluruh Indonesia secara online",
+    "response": "Pesan dibalas dalam 1x24 jam pada hari kerja"
+  },
+
+  "about": {
+    "intro": "Editory Studio adalah studio editing video yang fokus pada konten pendek dan panjang untuk Instagram, TikTok, dan YouTube.",
+    "story": [
+      "Banyak pemilik usaha dan kreator sebenarnya sudah punya bahan: footage produk, rekaman acara, atau video harian di galeri ponsel. Yang sering kurang adalah waktu dan keterampilan untuk mengolahnya menjadi konten yang layak tayang.",
+      "Editory Studio hadir untuk mengisi celah itu. Klien cukup mengirim footage dan brief singkat, lalu tim kami mengurus potongan, subtitle, musik, dan grafis sampai file siap unggah. Klien bisa fokus menjalankan usahanya, sementara akunnya tetap aktif dengan kualitas yang konsisten."
+    ],
+    "vision": "Menjadi studio editing pilihan UMKM dan kreator Indonesia untuk konten media sosial yang berkualitas dan konsisten.",
+    "mission": [
+      "Menghasilkan video yang menarik ditonton tanpa mengaburkan pesan brand.",
+      "Membuat layanan editing profesional terjangkau bagi usaha kecil dan kreator pemula.",
+      "Menjaga proses kerja yang jelas: jadwal pasti, revisi terukur, dan komunikasi yang mudah.",
+      "Terus mengikuti format dan tren platform agar konten klien tetap relevan."
+    ],
+    "values": [
+      {"title": "Cerita dulu, efek belakangan", "desc": "Setiap potongan harus membantu pesan tersampaikan. Efek hanya dipakai bila memperkuat cerita."},
+      {"title": "Tepat waktu", "desc": "Jadwal pengiriman disepakati di awal dan dijaga, karena konten media sosial bergantung pada momentum."},
+      {"title": "Revisi yang jelas", "desc": "Catatan revisi dikumpulkan per timestamp sehingga perbaikan cepat dan tidak berputar-putar."},
+      {"title": "Konsisten dengan brand", "desc": "Warna, huruf, dan gaya transisi dibuat menjadi template agar akun klien punya identitas yang mudah dikenali."}
+    ]
+  },
+
+  "team": [
+    {"role": "Creative Director", "name": "Nama Anggota", "desc": "Menentukan arah visual dan menjaga kualitas setiap video sebelum dikirim.", "color": "violet"},
+    {"role": "Video Editor", "name": "Nama Anggota", "desc": "Menyusun potongan, ritme, subtitle, dan musik sesuai brief klien.", "color": "teal"},
+    {"role": "Motion Designer", "name": "Nama Anggota", "desc": "Membuat teks bergerak, grafis, dan template visual untuk tiap brand.", "color": "amber"},
+    {"role": "Content Strategist", "name": "Nama Anggota", "desc": "Membantu klien menyusun ide konten dan kalender posting.", "color": "rose"}
+  ],
+
+  "services": [
+    {"title": "Editing Reels dan TikTok", "desc": "Video vertikal pendek dengan hook kuat di detik awal, potongan mengikuti ritme musik, dan subtitle yang mudah dibaca.", "color": "violet"},
+    {"title": "Editing YouTube", "desc": "Vlog, tutorial, dan dokumentasi acara dengan alur yang terjaga dari awal sampai akhir.", "color": "teal"},
+    {"title": "Motion grafis dan subtitle", "desc": "Teks bergerak, lower third, dan subtitle bergaya yang konsisten dengan identitas brand.", "color": "amber"},
+    {"title": "Color grading dan audio", "desc": "Warna dibuat seragam antar-klip, suara dibersihkan dari bising, dan musik diseimbangkan dengan suara.", "color": "rose"}
+  ],
+
+  "packages": [
+    {
+      "id": "reels-starter",
+      "name": "Reels Starter",
+      "price": 350000,
+      "unit": "video",
+      "unit_label": "per video",
+      "qty_label": "Jumlah video",
+      "videos_per_unit": 1,
+      "featured": false,
+      "desc": "Untuk kebutuhan sesekali seperti promo produk, peluncuran, atau acara.",
+      "features": [
+        "1 video vertikal hingga 60 detik",
+        "Subtitle dan teks penjelas",
+        "Musik latar bebas royalti",
+        "Cover video",
+        "File MP4 1080p siap unggah"
+      ],
+      "timeline": "3 hari kerja per video",
+      "revisions": "2 kali per video"
+    },
+    {
+      "id": "content-creator",
+      "name": "Content Creator",
+      "price": 1200000,
+      "unit": "bulan",
+      "unit_label": "per bulan",
+      "qty_label": "Durasi kontrak (bulan)",
+      "videos_per_unit": 4,
+      "featured": true,
+      "desc": "Untuk akun yang posting rutin setiap minggu dan butuh tampilan konsisten.",
+      "features": [
+        "4 video per bulan untuk Reels, TikTok, atau Shorts",
+        "Subtitle, motion grafis dasar, dan transisi",
+        "Cover atau thumbnail untuk setiap video",
+        "Template visual sesuai identitas brand",
+        "File MP4 1080p siap unggah"
+      ],
+      "timeline": "1 video dikirim setiap minggu",
+      "revisions": "3 kali per video"
+    },
+    {
+      "id": "brand-partner",
+      "name": "Brand Partner",
+      "price": 3500000,
+      "unit": "bulan",
+      "unit_label": "per bulan",
+      "qty_label": "Durasi kontrak (bulan)",
+      "videos_per_unit": 12,
+      "featured": false,
+      "desc": "Untuk brand yang ingin mengelola konten secara serius bersama satu tim tetap.",
+      "features": [
+        "12 video per bulan, termasuk hingga 2 video YouTube berdurasi 10 menit",
+        "Color grading dan sound design",
+        "Motion grafis dan template eksklusif",
+        "Konsultasi ide konten dan kalender posting bulanan",
+        "Laporan singkat performa konten setiap bulan",
+        "File hingga 4K bila footage mendukung"
+      ],
+      "timeline": "Jadwal produksi mingguan dengan prioritas pengerjaan",
+      "revisions": "5 kali per video"
+    }
+  ],
+
+  "process": [
+    {"title": "Brief dan konsultasi", "desc": "Kami pelajari brand, target penonton, dan contoh konten yang kamu suka.", "time": "Hari 1"},
+    {"title": "Kirim footage", "desc": "Footage mentah diunggah lewat Google Drive, lalu kami cek kelengkapan dan kualitasnya.", "time": "Hari 1 sampai 2"},
+    {"title": "Draft pertama", "desc": "Editor menyusun potongan, subtitle, musik, dan grafis sesuai brief.", "time": "Hari 2 sampai 3"},
+    {"title": "Revisi", "desc": "Kamu memberi catatan per timestamp, lalu kami perbaiki sesuai jatah revisi paket.", "time": "Hari 3 sampai 4"},
+    {"title": "Serah terima", "desc": "File final dikirim dalam format siap unggah beserta cover atau thumbnail.", "time": "Hari 4 sampai 5"}
+  ],
+
+  "faq": [
+    {"q": "Berapa lama pengerjaan satu video?", "a": "Video pendek hingga 60 detik selesai sekitar 3 hari kerja sejak footage lengkap diterima. Video YouTube bergantung durasi dan tingkat kerumitan, biasanya 4 sampai 7 hari kerja."},
+    {"q": "Apakah Editory Studio juga merekam video?", "a": "Fokus kami adalah editing. Footage disediakan klien, dan kami bisa memberi panduan singkat cara merekam dengan ponsel agar hasil editing maksimal."},
+    {"q": "Bagaimana revisi dihitung?", "a": "Satu kali revisi adalah satu kumpulan catatan yang dikirim sekaligus. Catatan sebaiknya ditulis per timestamp, misalnya \"0:12 ganti musik\", agar perbaikan cepat dan tepat."},
+    {"q": "Format file apa yang diterima dan dikirim?", "a": "Kami menerima MP4, MOV, dan file langsung dari kamera atau ponsel. Hasil akhir dikirim dalam MP4 1080p yang siap diunggah, serta 4K untuk paket Brand Partner bila footage mendukung."},
+    {"q": "Bagaimana sistem pembayarannya?", "a": "DP 50% saat proposal disetujui dan pelunasan sebelum file final dikirim. Paket bulanan dibayar di awal setiap bulan."},
+    {"q": "Bisakah membuat paket custom?", "a": "Bisa. Tulis kebutuhanmu di form proposal atau kirim pesan, lalu kami susun paket yang sesuai."}
+  ],
+
+  "portfolio": [
+    {"title": "Promo menu musim hujan", "category": "Kuliner", "format": "Reels", "ratio": "9:16", "duration": "0:30", "desc": "Potongan cepat mengikuti ketukan musik, dengan teks harga yang muncul bergantian di setiap menu.", "tools": ["Premiere Pro", "After Effects"], "color": "#E3A03A"},
+    {"title": "Lookbook koleksi lebaran", "category": "Fashion", "format": "Reels", "ratio": "9:16", "duration": "0:45", "desc": "Transisi antar-outfit yang mulus dan color grading hangat agar warna kain terlihat sesuai aslinya.", "tools": ["DaVinci Resolve"], "color": "#D0607E"},
+    {"title": "Vlog tiga hari di Labuan Bajo", "category": "Kreator", "format": "YouTube", "ratio": "16:9", "duration": "12:08", "desc": "Alur cerita per hari, peta perjalanan beranimasi, dan audio angin laut yang dibersihkan.", "tools": ["Premiere Pro", "Audition"], "color": "#2A9D8F"},
+    {"title": "Rutinitas skincare pagi", "category": "Kecantikan", "format": "TikTok", "ratio": "9:16", "duration": "0:58", "desc": "Subtitle bergaya dengan label nama produk, plus potongan close-up untuk tiap langkah pemakaian.", "tools": ["CapCut Pro", "After Effects"], "color": "#7C6CD8"},
+    {"title": "Highlight seminar kewirausahaan", "category": "Event", "format": "YouTube", "ratio": "16:9", "duration": "3:40", "desc": "Rangkuman acara sehari dengan kutipan pembicara, lower third nama, dan musik yang membangun suasana.", "tools": ["Premiere Pro"], "color": "#3E7CC4"},
+    {"title": "Unboxing earbuds nirkabel", "category": "Teknologi", "format": "Shorts", "ratio": "9:16", "duration": "0:50", "desc": "Hook di tiga detik pertama, zoom detail produk, dan teks spesifikasi yang ringkas.", "tools": ["DaVinci Resolve", "After Effects"], "color": "#5B4FC4"}
+  ],
+
+  "proposal_terms": [
+    "Pembayaran: DP 50% saat proposal disetujui dan pelunasan sebelum file final diserahkan. Paket bulanan dibayar di awal setiap bulan.",
+    "Revisi mengikuti jatah pada paket. Perubahan di luar brief awal dihitung sebagai pekerjaan tambahan.",
+    "Footage, logo, dan aset brand disediakan oleh klien.",
+    "Hak penggunaan video final sepenuhnya milik klien. Editory Studio boleh menampilkan karya di portofolio kecuali klien meminta kerahasiaan.",
+    "Penawaran berlaku 14 hari sejak tanggal proposal."
+  ],
+
+  "target": {
+    "amount": 1000000000,
+    "start": "2026-10-01",
+    "months": 24,
+    "editor_capacity": 45,
+    "plan": [
+      {"phase": "Kuartal 1", "months": 3, "clients": {"brand-partner": 1, "content-creator": 4, "reels-starter": 5}, "focus": "Bangun portofolio awal dan tawarkan ke jaringan UMKM terdekat. Promosi organik lewat Instagram studio."},
+      {"phase": "Kuartal 2", "months": 3, "clients": {"brand-partner": 2, "content-creator": 8, "reels-starter": 10}, "focus": "Unggah studi kasus sebelum dan sesudah editing secara rutin. Mulai iklan berbayar kecil dan program referral klien."},
+      {"phase": "Kuartal 3", "months": 3, "clients": {"brand-partner": 3, "content-creator": 12, "reels-starter": 15}, "focus": "Rekrut editor tambahan. Buat template per kategori usaha agar pengerjaan lebih cepat."},
+      {"phase": "Kuartal 4", "months": 3, "clients": {"brand-partner": 4, "content-creator": 16, "reels-starter": 20}, "focus": "Tawarkan perpanjangan kontrak dengan harga khusus untuk klien yang bertahan 6 bulan."},
+      {"phase": "Kuartal 5", "months": 3, "clients": {"brand-partner": 5, "content-creator": 20, "reels-starter": 25}, "focus": "Masuk ke segmen brand menengah dan agensi sebagai mitra editing."},
+      {"phase": "Kuartal 6", "months": 3, "clients": {"brand-partner": 6, "content-creator": 22, "reels-starter": 22}, "focus": "Susun SOP revisi dan kontrol kualitas agar mutu tetap terjaga saat volume naik."},
+      {"phase": "Kuartal 7", "months": 3, "clients": {"brand-partner": 7, "content-creator": 24, "reels-starter": 20}, "focus": "Kerja sama dengan kreator dan komunitas untuk paket konten rutin."},
+      {"phase": "Kuartal 8", "months": 3, "clients": {"brand-partner": 8, "content-creator": 28, "reels-starter": 20}, "focus": "Pertahankan klien Brand Partner dan naikkan nilai kontrak lewat layanan tambahan."}
+    ]
+  }
+}

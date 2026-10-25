@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Halaman tidak ditemukan | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap notfound">
+  <h1>Halaman ini tidak ada</h1>
+  <p class="lead">Mungkin linknya salah ketik atau proposal yang dicari sudah dihapus.</p>
+  <div class="actions">
+    <a class="btn" href="{{ url_for('index') }}">Kembali ke beranda</a>
+    <a class="btn btn-ghost" href="{{ url_for('proposal_form') }}">Buat proposal</a>
+  </div>
+</section>
+{% endblock %}

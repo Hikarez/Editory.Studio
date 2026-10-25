@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from "_partials.html" import progress_card %}
+{% block title %}Rencana target | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap page-head admin-head">
+  <div>
+    <h1>Rencana target Rp1 miliar</h1>
+    <p class="lead">Proyeksi omzet {{ progress.months }} bulan, {{ progress.start_label }} sampai {{ progress.end_label }}, berdasarkan jumlah klien aktif per paket di setiap kuartal.</p>
+  </div>
+  <div class="actions"><a class="btn btn-ghost" href="{{ url_for('admin') }}">Kembali ke dashboard</a></div>
+</section>
+
+<section class="wrap">{{ progress_card(progress) }}</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Proyeksi per kuartal</h2></div>
+  <div class="table-scroll">
+    <table class="data-table plan-table">
+      <thead>
+        <tr><th>Fase</th><th>Klien aktif per bulan</th><th class="num">Omzet per bulan</th><th class="num">Omzet fase</th><th>Kumulatif</th><th>Kapasitas</th><th>Fokus strategi</th></tr>
+      </thead>
+      <tbody>
+        {% for r in plan %}
+        <tr>
+          <td class="nowrap"><b>{{ r.phase }}</b><br><span class="muted">{{ r.period }}</span></td>
+          <td class="nowrap">{% for name, n in r.clients %}{{ n }} {{ name }}{% if not loop.last %}<br>{% endif %}{% endfor %}</td>
+          <td class="num">{{ r.monthly|rupiah }}</td>
+          <td class="num">{{ r.total|rupiah }}</td>
+          <td class="nowrap">{{ r.cumulative|rupiah }}<span class="mini-bar"><b style="width: {{ '%.1f'|format(r.cumulative_pct) }}%"></b></span></td>
+          <td class="nowrap">{{ r.videos }} video/bulan<br><span class="muted">{{ r.editors }} editor</span></td>
+          <td class="focus">{{ r.focus }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3"><b>Total proyeksi {{ progress.months }} bulan</b></td>
+          <td class="num"><b>{{ plan[-1].cumulative|rupiah }}</b></td>
+          <td colspan="3">{{ 'Melampaui' if plan[-1].cumulative >= progress.amount else 'Belum mencapai' }} target {{ progress.amount|rupiah }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Asumsi</h2></div>
+  <ul class="assumptions">{% for a in assumptions %}<li>{{ a }}</li>{% endfor %}</ul>
+</section>
+{% endblock %}

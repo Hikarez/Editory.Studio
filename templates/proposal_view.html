@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Proposal {{ p.code }} untuk {{ p.client_company }} | {{ brand.name }}{% endblock %}
+{% block content %}
+<div class="wrap doc-actions">
+  <a href="{{ url_for('proposal_form') }}">Buat proposal lain</a>
+  <div class="actions">
+    <a class="btn" href="{{ url_for('proposal_pdf', code=p.code) }}">Unduh PDF</a>
+    <button class="btn btn-ghost" type="button" data-copy="{{ share_url }}">Salin link</button>
+    <button class="btn btn-ghost" type="button" data-print>Cetak</button>
+  </div>
+</div>
+
+<article class="wrap doc">
+  <header class="doc-head">
+    <div>
+      <p class="doc-brand">{{ brand.name }}</p>
+      <p class="muted">{{ brand.tagline }}</p>
+    </div>
+    <dl class="doc-meta">
+      <dt>Nomor</dt><dd>{{ p.code }}</dd>
+      <dt>Tanggal</dt><dd>{{ p.created_at|tanggal }}</dd>
+      <dt>Berlaku hingga</dt><dd>{{ valid_until|tanggal }}</dd>
+      {% if is_admin %}<dt>Status</dt><dd><span class="status s-{{ p.status }}">{{ statuses[p.status] }}</span></dd>{% endif %}
+    </dl>
+  </header>
+
+  <h1>Proposal penawaran paket {{ p.package_name }}</h1>
+  <p class="recipient">Kepada {{ p.client_name }}, {{ p.client_company }}{% if p.client_email %} ({{ p.client_email }}){% endif %}</p>
+
+  <h2>Pendahuluan</h2>
+  <p>Terima kasih atas ketertarikan {{ p.client_company }} untuk bekerja sama dengan {{ brand.name }}. Berdasarkan kebutuhan yang disampaikan, kami menawarkan paket <b>{{ p.package_name }}</b> dengan rincian lingkup pekerjaan, biaya, dan ketentuan sebagai berikut.</p>
+  <p>{{ brand.short }}</p>
+
+  <h2>Rincian penawaran</h2>
+  <div class="table-scroll">
+    <table class="price-table">
+      <thead><tr><th>Layanan</th><th class="num">Jumlah</th><th class="num">Harga satuan</th><th class="num">Subtotal</th></tr></thead>
+      <tbody>
+        <tr><td>Paket {{ p.package_name }}</td><td class="num">{{ p.qty }} {{ p.unit }}</td><td class="num">{{ p.unit_price|rupiah }}</td><td class="num">{{ subtotal|rupiah }}</td></tr>
+      </tbody>
+      <tfoot>
+        {% if p.discount %}<tr><td colspan="3">Diskon {{ p.discount }}%</td><td class="num">- {{ (subtotal - p.total)|rupiah }}</td></tr>{% endif %}
+        <tr class="grand"><td colspan="3">Total</td><td class="num">{{ p.total|rupiah }}</td></tr>
+      </tfoot>
+    </table>
+  </div>
+  <p class="muted small">
+    {% if p.unit == 'bulan' %}Harga paket dihitung per bulan untuk masa kontrak {{ p.qty }} bulan. Pembayaran dilakukan di awal setiap bulan.
+    {% else %}Harga dihitung per video untuk {{ p.qty }} video.{% endif %}
+  </p>
+
+  {% if pkg %}
+  <h2>Lingkup pekerjaan</h2>
+  <ul>{% for f in pkg.features %}<li>{{ f }}</li>{% endfor %}</ul>
+  <p class="spaced">Estimasi pengerjaan: {{ pkg.timeline }}. Revisi: {{ pkg.revisions }}.</p>
+  {% endif %}
+
+  {% if p.needs or p.start_date %}
+  <h2>Kebutuhan klien</h2>
+  {% if p.start_date %}<p>Rencana mulai: {{ p.start_date|tanggal }}</p>{% endif %}
+  {% if p.needs %}<p class="needs">{{ p.needs }}</p>{% endif %}
+  {% endif %}
+
+  <h2>Alur kerja</h2>
+  <ol>{% for s in process %}<li><b>{{ s.title }}.</b> {{ s.desc }}</li>{% endfor %}</ol>
+
+  <h2>Ketentuan</h2>
+  <ul>{% for t in terms %}<li>{{ t }}</li>{% endfor %}</ul>
+
+  <h2>Penutup</h2>
+  <p>Kami siap menyesuaikan penawaran ini dengan kebutuhan {{ p.client_company }}. Untuk menyetujui atau berdiskusi, hubungi kami melalui email <a href="mailto:{{ brand.email }}">{{ brand.email }}</a> atau Instagram <a href="{{ brand.instagram_url }}" target="_blank" rel="noopener">@{{ brand.instagram }}</a>.</p>
+
+  <div class="signs">
+    <div><p>Hormat kami,</p><div class="line"></div><b>{{ brand.name }}</b></div>
+    <div><p>Disetujui oleh,</p><div class="line"></div><b>{{ p.client_name }}</b><span class="muted">{{ p.client_company }}</span></div>
+  </div>
+</article>
+{% endblock %}

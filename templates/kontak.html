@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% from "_partials.html" import input, textarea %}
+{% block title %}Kontak | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap page-head">
+  <h1>Ceritakan kebutuhan videomu</h1>
+  <p class="lead">Kirim pesan singkat dan kami balas lewat email. Kalau sudah tahu paket yang diinginkan, kamu bisa langsung membuat proposal.</p>
+</section>
+
+<div class="wrap contact-grid">
+  <form class="form-card" method="post" novalidate>
+    <div class="form-grid cols">
+      {{ input('name', 'Nama', form, errors, required=True, attrs='autocomplete="name"') }}
+      {{ input('email', 'Email', form, errors, type='email', required=True, attrs='autocomplete="email"') }}
+    </div>
+    <div class="form-grid">
+      <div class="field">
+        <label for="service">Layanan yang diminati <span class="optional">(opsional)</span></label>
+        <select id="service" name="service">
+          <option value="">Belum tahu, ingin konsultasi</option>
+          {% for p in packages %}
+          <option value="{{ p.name }}"{% if form.get('service') == p.name %} selected{% endif %}>{{ p.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {{ textarea('message', 'Pesan', form, errors, required=True, placeholder='Contoh: butuh 4 video Reels per bulan untuk promo kafe, footage sudah ada.') }}
+      <div><button class="btn" type="submit">Kirim pesan</button></div>
+    </div>
+  </form>
+
+  <aside class="contact-info">
+    <div><h3>Email</h3><p><a href="mailto:{{ brand.email }}">{{ brand.email }}</a></p></div>
+    <div><h3>Instagram</h3><p><a href="{{ brand.instagram_url }}" target="_blank" rel="noopener">@{{ brand.instagram }}</a></p></div>
+    <div><h3>Area layanan</h3><p>{{ brand.area }}</p></div>
+    <div><h3>Waktu respons</h3><p>{{ brand.response }}</p></div>
+    <div class="contact-cta">
+      <h3>Sudah tahu paketnya?</h3>
+      <p>Buat proposal penawaran sekarang, lengkap dengan rincian harga.</p>
+      <a class="btn btn-ghost" href="{{ url_for('proposal_form') }}">Buat proposal</a>
+    </div>
+  </aside>
+</div>
+{% endblock %}

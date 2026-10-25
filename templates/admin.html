@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% from "_partials.html" import progress_card %}
+{% block title %}Dashboard | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap page-head admin-head">
+  <div>
+    <h1>Dashboard</h1>
+    <p class="lead">Proposal yang statusnya diubah menjadi Deal otomatis dihitung ke progres target.</p>
+  </div>
+  <div class="actions">
+    <a class="btn btn-ghost" href="{{ url_for('admin_target') }}">Rencana target</a>
+    <a class="btn" href="{{ url_for('proposal_form') }}">Buat proposal</a>
+    <form method="post" action="{{ url_for('admin_logout') }}"><button class="btn btn-ghost" type="submit">Keluar</button></form>
+  </div>
+</section>
+
+<section class="wrap">{{ progress_card(progress) }}</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Proposal</h2></div>
+  {% if proposals %}
+  <div class="table-scroll">
+    <table class="data-table">
+      <thead><tr><th>Nomor</th><th>Klien</th><th>Paket</th><th class="num">Total</th><th>Status</th><th>File</th></tr></thead>
+      <tbody>
+        {% for r in proposals %}
+        <tr>
+          <td><a href="{{ url_for('proposal_view', code=r.code) }}">{{ r.code }}</a><br><span class="muted">{{ r.created_at|tanggal }}</span></td>
+          <td>{{ r.client_company }}<br><span class="muted">{{ r.client_name }}</span></td>
+          <td>{{ r.package_name }}<br><span class="muted">{{ r.qty }} {{ r.unit }}{% if r.discount %}, diskon {{ r.discount }}%{% endif %}</span></td>
+          <td class="num">{{ r.total|rupiah }}</td>
+          <td>
+            <form class="status-form" method="post" action="{{ url_for('update_status', code=r.code) }}">
+              <span class="status s-{{ r.status }}">{{ statuses[r.status] }}</span>
+              <select name="status" aria-label="Ubah status {{ r.code }}">
+                {% for key, label in statuses.items() %}<option value="{{ key }}"{% if r.status == key %} selected{% endif %}>{{ label }}</option>{% endfor %}
+              </select>
+              <button class="btn btn-sm btn-ghost" type="submit">Simpan</button>
+            </form>
+          </td>
+          <td><a href="{{ url_for('proposal_pdf', code=r.code) }}">PDF</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="empty">Belum ada proposal. <a href="{{ url_for('proposal_form') }}">Buat proposal pertama</a>.</p>
+  {% endif %}
+</section>
+
+<section class="wrap section">
+  <div class="section-head"><h2>Pesan masuk</h2></div>
+  {% if messages %}
+  <ul class="messages">
+    {% for m in messages %}
+    <li>
+      <p class="meta"><b>{{ m.name }}</b>, <a href="mailto:{{ m.email }}">{{ m.email }}</a>, {{ m.created_at|tanggal }}{% if m.service %}, minat {{ m.service }}{% endif %}</p>
+      <p>{{ m.message }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="empty">Belum ada pesan dari form kontak.</p>
+  {% endif %}
+</section>
+{% endblock %}

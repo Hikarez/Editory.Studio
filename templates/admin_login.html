@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Masuk admin | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap login">
+  <h1>Masuk admin</h1>
+  <p class="lead">Dashboard untuk melihat proposal, pesan masuk, dan progres target Rp1 miliar.</p>
+  <form method="post" class="form-card form-grid">
+    <div class="field{% if error %} has-error{% endif %}">
+      <label for="password">Kata sandi</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required autofocus{% if error %} aria-invalid="true" aria-describedby="password-error"{% endif %}>
+      {% if error %}<p class="error" id="password-error">{{ error }}</p>{% endif %}
+    </div>
+    <div><button class="btn" type="submit">Masuk</button></div>
+  </form>
+</section>
+{% endblock %}

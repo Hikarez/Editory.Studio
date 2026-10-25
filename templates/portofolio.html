@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "_partials.html" import work_card %}
+{% block title %}Portofolio | {{ brand.name }}{% endblock %}
+{% block content %}
+<section class="wrap page-head">
+  <h1>Portofolio</h1>
+  <p class="lead">Contoh pengerjaan untuk kuliner, fashion, kreator, dan acara. Tiap karya disesuaikan dengan platform tujuannya.</p>
+</section>
+
+<section class="wrap section section-tight">
+  <nav class="filters" aria-label="Filter kategori">
+    <a href="{{ url_for('portofolio') }}"{% if not active %} class="active" aria-current="page"{% endif %}>Semua</a>
+    {% for cat in categories %}
+    <a href="{{ url_for('portofolio', kategori=cat) }}"{% if active == cat %} class="active" aria-current="page"{% endif %}>{{ cat }}</a>
+    {% endfor %}
+  </nav>
+  {% if items %}
+  <div class="works">
+    {% for item in items %}{{ work_card(item) }}{% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">Belum ada karya di kategori ini. <a href="{{ url_for('portofolio') }}">Tampilkan semua karya</a>.</p>
+  {% endif %}
+</section>
+{% endblock %}
