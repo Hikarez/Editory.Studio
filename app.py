@@ -16,9 +16,25 @@ from utils import add_months, bulan_singkat, bulan_tahun, rupiah, tanggal, valid
 
 BASE_DIR = Path(__file__).resolve().parent
 CONTENT_FILE = BASE_DIR / "data" / "content.json"
-DB_FILE = Path(os.environ.get("EDITORY_DB", BASE_DIR / "instance" / "editory.db"))
+def _pilih_lokasi_db():
+    """Pakai instance/ bila bisa ditulis; bila tidak (misalnya Vercel), pindah ke /tmp."""
+    lokal = BASE_DIR / "instance" / "editory.db"
+    if os.environ.get("VERCEL") or os.environ.get("VERCEL_ENV") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+        return Path("/tmp/editory.db")
+    try:
+        lokal.parent.mkdir(parents=True, exist_ok=True)
+        if os.access(lokal.parent, os.W_OK):
+            return lokal
+    except OSError:
+        pass
+    return Path("/tmp/editory.db")
 
-app = Flask(__name__)
+
+DB_FILE = Path(os.environ.get("EDITORY_DB") or _pilih_lokasi_db())
+
+# File statis ada di public/static agar bisa disajikan langsung oleh CDN Vercel,
+# dan tetap bisa dibuka lewat Flask saat dijalankan di komputer sendiri.
+app = Flask(__name__, static_folder="public/static", static_url_path="/static")
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "ganti-dengan-secret-key-sendiri")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "editory123")
 
