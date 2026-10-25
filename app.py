@@ -32,9 +32,8 @@ def _pilih_lokasi_db():
 
 DB_FILE = Path(os.environ.get("EDITORY_DB") or _pilih_lokasi_db())
 
-# File statis ada di public/static agar bisa disajikan langsung oleh CDN Vercel,
-# dan tetap bisa dibuka lewat Flask saat dijalankan di komputer sendiri.
-app = Flask(__name__, static_folder="public/static", static_url_path="/static")
+# File statis disajikan langsung oleh Flask dari folder static/ (salinannya di public/static dipakai CDN Vercel bila tersedia).
+app = Flask(__name__, static_folder="static", static_url_path="/static")
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "ganti-dengan-secret-key-sendiri")
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "editory123")
 
